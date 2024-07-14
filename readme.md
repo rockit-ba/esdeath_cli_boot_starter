@@ -21,7 +21,7 @@
 <dependency>
     <groupId>io.github.rockit-ba</groupId>
     <artifactId>esdeath_cli_boot_starter</artifactId>
-    <version>1.0.2</version>
+    <version>1last-version</version>
 </dependency>
 ```
 
