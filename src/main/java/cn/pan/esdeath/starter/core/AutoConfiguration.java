@@ -6,7 +6,6 @@ import cn.pan.esdeathcli.core.Config;
 import cn.pan.esdeathcli.core.StandaloneConfig;
 import cn.pan.esdeathcli.core.consume.AbstractSubscriber;
 import cn.pan.esdeathcli.core.consume.EsdeathConsumer;
-import cn.pan.esdeathcli.core.consume.SubscriberRegister;
 import cn.pan.esdeathcli.core.produce.EsdeathProducer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,8 +19,6 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static cn.pan.esdeath.starter.core.EsdeathClientProperties.ServerMode.cluster;
 
 
 @EnableConfigurationProperties({EsdeathClientProperties.class})
