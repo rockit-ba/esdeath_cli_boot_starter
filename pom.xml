@@ -9,21 +9,42 @@
     <version>1.0.1</version>
     <packaging>jar</packaging>
 
-    <name>esdeath_client_boot_starter</name>
-    <description>延迟消息客户端</description>
+    <description>esdeath_go server springboot starter client</description>
+    <url>https://github.com/rockit-ba/esdeath_cli_boot_starter.git</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
     <developers>
         <developer>
-            <name>吉祥</name>
+            <name>jixiang</name>
             <email>1121153008@qq.com</email>
+            <timezone>+8</timezone>
         </developer>
     </developers>
 
+    <scm>
+        <url>https://github.com/rockit-ba/esdeath_cli_boot_starter</url>
+        <connection>scm:git:https://github.com/rockit-ba/esdeath_cli_boot_starter.git</connection>
+        <developerConnection>scm:git:https://github.com/rockit-ba/esdeath_cli_boot_starter.git</developerConnection>
+    </scm>
+
     <properties>
+        <serverId>central</serverId>
         <java.version>8</java.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.plugin.version>3.8.1</maven.plugin.version>
+
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-source-plugin.version>2.2.1</maven-source-plugin.version>
+        <maven-javadoc-plugin.version>2.9.1</maven-javadoc-plugin.version>
+        <maven-gpg-plugin.version>3.2.4</maven-gpg-plugin.version>
+        <central-publishing-maven-plugin.version>0.4.0</central-publishing-maven-plugin.version>
         <spring-boot.version>2.6.3</spring-boot.version>
         <hutool.version>5.8.25</hutool.version>
     </properties>
@@ -88,9 +109,74 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.plugin.version}</version>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven-source-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Javadoc -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+                <configuration>
+                    <additionalparam>-Xdoclint:none</additionalparam>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Gpg Signature -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>${maven-gpg-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>${central-publishing-maven-plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <tokenAuth>true</tokenAuth>
+                </configuration>
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>${serverId}</id>
+            <url>https://central.sonatype.com/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
