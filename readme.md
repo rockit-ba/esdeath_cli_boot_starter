@@ -2,6 +2,22 @@
 项目中引入Maven
 
 ```xml
+<repositories>
+    <repository>
+        <id>central-repos1</id>
+        <name>Central Repository 2</name>
+        <url>https://repo1.maven.org/maven2/</url>
+        <releases>
+            <enabled>true</enabled>
+        </releases>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+    </repository>
+</repositories>
+```
+
+```xml
 <dependency>
     <groupId>io.github.rockit-ba</groupId>
     <artifactId>esdeath_cli_boot_starter</artifactId>
