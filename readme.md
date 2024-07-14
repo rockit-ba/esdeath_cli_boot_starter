@@ -1,14 +1,11 @@
-Maven还未发布到中央仓库，请克隆到本地，然后install使用
-
-
 
 项目中引入Maven
 
 ```xml
 <dependency>
-    <groupId>cn.pan.esdeath.starter</groupId>
-    <artifactId>esdeath_client_boot_starter</artifactId>
-    <version>0.1</version>
+    <groupId>io.github.rockit-ba</groupId>
+    <artifactId>esdeath_cli_boot_starter</artifactId>
+    <version>1.0.1</version>
 </dependency>
 ```
 
